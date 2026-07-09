@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: targeting-deployment
+  namespace: targeting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: targeting
+  template:
+    metadata:
+      labels:
+        app: targeting
+    spec:
+      containers:
+      - name: targeting
+        image: targeting:latest
+        ports:
+        - containerPort: 8003

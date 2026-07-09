@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flag-deployment
+  namespace: flag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flag
+  template:
+    metadata:
+      labels:
+        app: flag
+    spec:
+      containers:
+      - name: flag
+        image: flag:latest
+        ports:
+        - containerPort: 8002
