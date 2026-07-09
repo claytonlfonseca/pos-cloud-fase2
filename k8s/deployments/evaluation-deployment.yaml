@@ -16,5 +16,11 @@ spec:
       containers:
       - name: evaluation
         image: evaluation:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 8004
+        envFrom:
+          - secretRef:
+              name: evaluation-secrets
+          - configMapRef:
+              name: evaluation-config

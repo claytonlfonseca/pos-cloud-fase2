@@ -16,5 +16,12 @@ spec:
       containers:
       - name: analytics
         image: analytics:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 8005
+        envFrom:
+          - secretRef:
+              name: analytics-secrets
+          - configMapRef:
+              name: analytics-config
+        

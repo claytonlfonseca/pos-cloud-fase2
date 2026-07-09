@@ -5,4 +5,3 @@ metadata:
   namespace: auth
 data:
   PORT: "8001"
-  MASTER_KEY: "admin-secreto-123"

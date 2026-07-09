@@ -16,5 +16,11 @@ spec:
       containers:
       - name: flag
         image: flag:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 8002
+        envFrom:
+          - secretRef:
+              name: flag-secrets
+          - configMapRef:
+              name: flag-config

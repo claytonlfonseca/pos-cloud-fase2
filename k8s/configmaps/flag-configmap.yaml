@@ -5,5 +5,4 @@ metadata:
   namespace: flag
 data:
   PORT: "8002"
-  DATABASE_URL: "postgres://postgres:postgres@postgres-flags:5432/flags_db?sslmode=disable"
   AUTH_SERVICE_URL: "http://auth-service:8001"

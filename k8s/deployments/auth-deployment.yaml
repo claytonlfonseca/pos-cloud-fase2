@@ -16,5 +16,11 @@ spec:
       containers:
       - name: auth
         image: auth:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 8001
+        envFrom:
+          - secretRef:
+              name: auth-secrets
+          - configMapRef:
+              name: auth-config

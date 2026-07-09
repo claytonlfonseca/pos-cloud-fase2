@@ -16,5 +16,11 @@ spec:
       containers:
       - name: targeting
         image: targeting:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 8003
+        envFrom:
+          - secretRef:
+              name: targeting-secrets
+          - configMapRef:
+              name: targeting-config
