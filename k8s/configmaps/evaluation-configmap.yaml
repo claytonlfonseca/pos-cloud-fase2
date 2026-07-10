@@ -5,7 +5,6 @@ metadata:
   namespace: evaluation
 data:
   PORT: "8004"
-  REDIS_URL: "redis://host.docker.internal:6379"
   FLAG_SERVICE_URL: "http://flag-service.flag"
   TARGETING_SERVICE_URL: "http://targeting-service.targeting"
   AWS_REGION: "us-east-1"

@@ -4,7 +4,7 @@ metadata:
   name: app-gateway
   namespace: gateway
 spec:
-  gatewayClassName: nginx 
+  gatewayClassName: aws-alb 
   listeners:
     - name: http
       protocol: HTTP

@@ -1,0 +1,432 @@
+[
+  {
+    "id": "1783704432757",
+    "timestamp": 1783704432757,
+    "request": {
+      "id": "1783704432681",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:9000/auth/health",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "16",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Fri, 10 Jul 2026 17:27:12 GMT",
+        "server": "nginx"
+      },
+      "body": "{\"status\":\"ok\"}\n",
+      "time": 81,
+      "size": 16,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1783704468128",
+    "timestamp": 1783704468128,
+    "request": {
+      "id": "1783704468004",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:9000/auth/validate",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "37",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Fri, 10 Jul 2026 17:27:48 GMT",
+        "server": "nginx",
+        "x-content-type-options": "nosniff"
+      },
+      "body": "Authorization header não encontrado\n",
+      "time": 133,
+      "size": 37,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1783704508784",
+    "timestamp": 1783704508784,
+    "request": {
+      "id": "1783704508575",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:9000/auth/validate",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "admin-secreto-123",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Fri, 10 Jul 2026 17:28:28 GMT",
+        "server": "nginx",
+        "x-content-type-options": "nosniff"
+      },
+      "body": "Chave de API inválida ou inativa\n",
+      "time": 201,
+      "size": 34,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1783704532589",
+    "timestamp": 1783704532589,
+    "request": {
+      "id": "1783704532576",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:9000/auth/admin/keys",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "admin-secreto-123",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "none"
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 405,
+      "statusText": "Method Not Allowed",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "23",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Fri, 10 Jul 2026 17:28:52 GMT",
+        "server": "nginx",
+        "x-content-type-options": "nosniff"
+      },
+      "body": "Método não permitido\n",
+      "time": 18,
+      "size": 23,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1783704561192",
+    "timestamp": 1783704561192,
+    "request": {
+      "id": "1783704561189",
+      "name": "New Request",
+      "method": "GET",
+      "url": "http://localhost:9000/auth/validate",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer admin-secreto-123",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "none"
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": {
+          "token": "admin-secreto-123"
+        }
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 401,
+      "statusText": "Unauthorized",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "34",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Fri, 10 Jul 2026 17:29:21 GMT",
+        "server": "nginx",
+        "x-content-type-options": "nosniff"
+      },
+      "body": "Chave de API inválida ou inativa\n",
+      "time": 11,
+      "size": 34,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1783704597967",
+    "timestamp": 1783704597967,
+    "request": {
+      "id": "1783704597933",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:9000/auth/keys",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer admin-secreto-123",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\"name\": \"meu-primeiro-servico\"}"
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": {
+          "token": "admin-secreto-123"
+        }
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 404,
+      "statusText": "Not Found",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "19",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Fri, 10 Jul 2026 17:29:57 GMT",
+        "server": "nginx",
+        "x-content-type-options": "nosniff"
+      },
+      "body": "404 page not found\n",
+      "time": 25,
+      "size": 19,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1783704613131",
+    "timestamp": 1783704613131,
+    "request": {
+      "id": "1783704613087",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:9000/auth/admin/keys",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer admin-secreto-123",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\"name\": \"meu-primeiro-servico\"}"
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": {
+          "token": "admin-secreto-123"
+        }
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 201,
+      "statusText": "Created",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "195",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Fri, 10 Jul 2026 17:30:13 GMT",
+        "server": "nginx"
+      },
+      "body": "{\"name\":\"meu-primeiro-servico\",\"key\":\"tm_key_9b9a114f9af443f18963d9eee25587eedad24a3f37fa252526d496f9b9ce9e26\",\"message\":\"Guarde esta chave com segurança! Você não poderá vê-la novamente.\"}\n",
+      "time": 57,
+      "size": 195,
+      "cookies": []
+    }
+  },
+  {
+    "id": "1783704661205",
+    "timestamp": 1783704661205,
+    "request": {
+      "id": "1783704661013",
+      "name": "New Request",
+      "method": "POST",
+      "url": "http://localhost:9000/auth/validate",
+      "params": [],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer tm_key_9b9a114f9af443f18963d9eee25587eedad24a3f37fa252526d496f9b9ce9e26",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\"name\": \"meu-primeiro-servico\"}"
+      },
+      "auth": {
+        "type": "bearer",
+        "bearer": {
+          "token": "tm_key_9b9a114f9af443f18963d9eee25587eedad24a3f37fa252526d496f9b9ce9e26"
+        }
+      },
+      "inheritAuth": true
+    },
+    "response": {
+      "status": 200,
+      "statusText": "OK",
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "28",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Fri, 10 Jul 2026 17:31:01 GMT",
+        "server": "nginx"
+      },
+      "body": "{\"message\":\"Chave válida\"}\n",
+      "time": 160,
+      "size": 28,
+      "cookies": []
+    }
+  }
+]

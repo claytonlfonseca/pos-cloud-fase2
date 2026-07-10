@@ -6,6 +6,4 @@ metadata:
 data:
   PORT: "8005"
   AWS_REGION: "us-east-1"
-  AWS_SQS_URL: ""
   AWS_DYNAMODB_TABLE: "ToggleMasterAnalytics"
-  AWS_ENDPOINT_URL: "http://host.docker.internal:8000"
