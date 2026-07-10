@@ -7,6 +7,6 @@ spec:
   selector:
     app: auth
   ports:
-  - port: 8001
+  - port: 80
     targetPort: 8001
   type: ClusterIP

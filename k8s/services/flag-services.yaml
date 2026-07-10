@@ -7,6 +7,6 @@ spec:
   selector:
     app: flag
   ports:
-  - port: 8002
+  - port: 80
     targetPort: 8002
   type: ClusterIP

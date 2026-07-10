@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: targeting-deployment
+  name: targeting
   namespace: targeting
 spec:
   replicas: 1

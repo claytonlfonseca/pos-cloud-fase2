@@ -7,6 +7,6 @@ spec:
   selector:
     app: targeting
   ports:
-  - port: 8003
+  - port: 80
     targetPort: 8003
   type: ClusterIP

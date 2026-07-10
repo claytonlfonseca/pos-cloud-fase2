@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: evaluation-deployment
+  name: evaluation
   namespace: evaluation
 spec:
   replicas: 1

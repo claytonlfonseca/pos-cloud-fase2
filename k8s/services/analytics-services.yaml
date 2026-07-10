@@ -7,6 +7,6 @@ spec:
   selector:
     app: analytics
   ports:
-  - port: 8005
+  - port: 80
     targetPort: 8005
   type: ClusterIP

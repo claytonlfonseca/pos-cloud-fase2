@@ -7,6 +7,6 @@ spec:
   selector:
     app: evaluation
   ports:
-  - port: 8004
+  - port: 80
     targetPort: 8004
   type: ClusterIP

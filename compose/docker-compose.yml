@@ -54,97 +54,97 @@ services:
     ports:
       - "8000:8000"
 
-  auth-service:
-    build:
-      context: ./auth-service
-      dockerfile: Dockerfile
-    container_name: auth-service
-    environment:
-      PORT: "8001"
-      DATABASE_URL: "postgres://postgres:postgres@postgres-auth:5432/auth_db?sslmode=disable"
-      MASTER_KEY: "admin-secreto-123"
-    depends_on:
-      postgres-auth:
-        condition: service_healthy
-    ports:
-      - "8001:8001"
+  # auth-service:
+  #   build:
+  #     context: ./auth-service
+  #     dockerfile: Dockerfile
+  #   container_name: auth-service
+  #   environment:
+  #     PORT: "8001"
+  #     DATABASE_URL: "postgres://postgres:postgres@postgres-auth:5432/auth_db?sslmode=disable"
+  #     MASTER_KEY: "admin-secreto-123"
+  #   depends_on:
+  #     postgres-auth:
+  #       condition: service_healthy
+  #   ports:
+  #     - "8001:8001"
 
-  flag-service:
-    build:
-      context: ./flag-service
-      dockerfile: Dockerfile
-    container_name: flag-service
-    environment:
-      PORT: "8002"
-      DATABASE_URL: "postgres://postgres:postgres@postgres-flags:5432/flags_db?sslmode=disable"
-      AUTH_SERVICE_URL: "http://auth-service:8001"
-    depends_on:
-      postgres-flags:
-        condition: service_healthy
-      auth-service:
-        condition: service_started
-    ports:
-      - "8002:8002"
+  # flag-service:
+  #   build:
+  #     context: ./flag-service
+  #     dockerfile: Dockerfile
+  #   container_name: flag-service
+  #   environment:
+  #     PORT: "8002"
+  #     DATABASE_URL: "postgres://postgres:postgres@postgres-flags:5432/flags_db?sslmode=disable"
+  #     AUTH_SERVICE_URL: "http://auth-service:8001"
+  #   depends_on:
+  #     postgres-flags:
+  #       condition: service_healthy
+  #     auth-service:
+  #       condition: service_started
+  #   ports:
+  #     - "8002:8002"
 
-  targeting-service:
-    build:
-      context: ./targeting-service
-      dockerfile: Dockerfile
-    container_name: targeting-service
-    environment:
-      PORT: "8003"
-      DATABASE_URL: "postgres://postgres:postgres@postgres-flags:5432/flags_db?sslmode=disable"
-      AUTH_SERVICE_URL: "http://auth-service:8001"
-    depends_on:
-      postgres-flags:
-        condition: service_healthy
-      auth-service:
-        condition: service_started
-    ports:
-      - "8003:8003"
+  # targeting-service:
+  #   build:
+  #     context: ./targeting-service
+  #     dockerfile: Dockerfile
+  #   container_name: targeting-service
+  #   environment:
+  #     PORT: "8003"
+  #     DATABASE_URL: "postgres://postgres:postgres@postgres-flags:5432/flags_db?sslmode=disable"
+  #     AUTH_SERVICE_URL: "http://auth-service:8001"
+  #   depends_on:
+  #     postgres-flags:
+  #       condition: service_healthy
+  #     auth-service:
+  #       condition: service_started
+  #   ports:
+  #     - "8003:8003"
 
-  evaluation-service:
-    build:
-      context: ./evaluation-service
-      dockerfile: Dockerfile
-    container_name: evaluation-service
-    environment:
-      PORT: "8004"
-      REDIS_URL: "redis://redis:6379"
-      FLAG_SERVICE_URL: "http://flag-service:8002"
-      TARGETING_SERVICE_URL: "http://targeting-service:8003"
-      SERVICE_API_KEY: "tm_key_local_service_123"
-      AWS_REGION: "us-east-1"
-      AWS_SQS_URL: ""
-      AWS_ENDPOINT_URL: "http://dynamodb-local:8000"
-    depends_on:
-      redis:
-        condition: service_healthy
-      flag-service:
-        condition: service_started
-      targeting-service:
-        condition: service_started
-    ports:
-      - "8004:8004"
+  # evaluation-service:
+  #   build:
+  #     context: ./evaluation-service
+  #     dockerfile: Dockerfile
+  #   container_name: evaluation-service
+  #   environment:
+  #     PORT: "8004"
+  #     REDIS_URL: "redis://redis:6379"
+  #     FLAG_SERVICE_URL: "http://flag-service:8002"
+  #     TARGETING_SERVICE_URL: "http://targeting-service:8003"
+  #     SERVICE_API_KEY: "tm_key_local_service_123"
+  #     AWS_REGION: "us-east-1"
+  #     AWS_SQS_URL: ""
+  #     AWS_ENDPOINT_URL: "http://dynamodb-local:8000"
+  #   depends_on:
+  #     redis:
+  #       condition: service_healthy
+  #     flag-service:
+  #       condition: service_started
+  #     targeting-service:
+  #       condition: service_started
+  #   ports:
+  #     - "8004:8004"
 
-  analytics-service:
-    build:
-      context: ./analytics-service
-      dockerfile: Dockerfile
-    container_name: analytics-service
-    environment:
-      PORT: "8005"
-      AWS_REGION: "us-east-1"
-      AWS_SQS_URL: ""
-      AWS_DYNAMODB_TABLE: "ToggleMasterAnalytics"
-      AWS_ENDPOINT_URL: "http://dynamodb-local:8000"
-      AWS_ACCESS_KEY_ID: "dummy"
-      AWS_SECRET_ACCESS_KEY: "dummy"
-    depends_on:
-      dynamodb-local:
-        condition: service_started
-    ports:
-      - "8005:8005"
+  # analytics-service:
+  #   build:
+  #     context: ./analytics-service
+  #     dockerfile: Dockerfile
+  #   container_name: analytics-service
+  #   environment:
+  #     PORT: "8005"
+  #     AWS_REGION: "us-east-1"
+  #     AWS_SQS_URL: ""
+  #     AWS_DYNAMODB_TABLE: "ToggleMasterAnalytics"
+  #     AWS_ENDPOINT_URL: "http://dynamodb-local:8000"
+  #     AWS_ACCESS_KEY_ID: "dummy"
+  #     AWS_SECRET_ACCESS_KEY: "dummy"
+  #   depends_on:
+  #     dynamodb-local:
+  #       condition: service_started
+  #   ports:
+  #     - "8005:8005"
 
 volumes:
   postgres_auth_data:
