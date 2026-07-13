@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
       - name: evaluation
-        image: evaluation:latest
-        imagePullPolicy: Never
+        image: 257527265067.dkr.ecr.us-east-1.amazonaws.com/fiap-fase2/evaluation-service:v1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8004
         envFrom:
