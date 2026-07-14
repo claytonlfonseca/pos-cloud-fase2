@@ -8,5 +8,5 @@ data:
   FLAG_SERVICE_URL: "http://flag-service.flag"
   TARGETING_SERVICE_URL: "http://targeting-service.targeting"
   AWS_REGION: "us-east-1"
-  AWS_SQS_URL: ""
+  AWS_SQS_URL: "https://sqs.us-east-1.amazonaws.com/257527265067/EvaluationEvent"
   AWS_DYNAMODB_TABLE: "ToggleMasterAnalytics"
