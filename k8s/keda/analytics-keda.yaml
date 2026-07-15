@@ -1,0 +1,34 @@
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: analytics-aws-auth
+  namespace: analytics
+spec:
+  podIdentity:
+    provider: aws
+    identityOwner: keda
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: analytics-sqs-scaler
+  namespace: analytics
+spec:
+  scaleTargetRef:
+    name: analytics
+
+  pollingInterval: 10
+  cooldownPeriod: 30
+
+  minReplicaCount: 1
+  maxReplicaCount: 5
+
+  triggers:
+    - type: aws-sqs-queue
+      authenticationRef:
+        name: analytics-aws-auth
+      metadata:
+        queueURL: https://sqs.us-east-1.amazonaws.com/257527265067/EvaluationEvent
+        awsRegion: us-east-1
+        queueLength: "1"
+        scaleOnInFlight: "true"
