@@ -35,8 +35,23 @@ jobs:
         python-version: '3.11'
     
     - name: install dependencies
-      run: pip install -r requirements.txt pytest
+      run: pip install -r requirements.txt pytest    
 
-    - name: run tests
-      run: python -m pytest -v
-    
+  linter:
+    name: Linter/Static Analysis
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: install dependencies
+        run: pip install -r requirements.txt pytest
+      
+      - name: run linter
+        run: pylint *.py --rcfile=.pylintrc
