@@ -13,6 +13,11 @@ on:
       - 'services/auth-service/**'
   workflow_dispatch:
 
+env:
+  AWS_REGION: "us-east-1"
+  ECR_REGISTRY_URL: ${{ secrets.ECR_REGISTRY_URL }}
+  
+
 jobs:
   build-and-test:
     name: Build & Unit Test
@@ -114,3 +119,37 @@ jobs:
         with:
           name: horusec-report
           path: horusec-output.json
+
+  docker:
+    name: Build and push Docker image
+    runs-on: ubuntu-latest
+    needs: security
+    permissions:
+      contents: read
+      packages: write
+    defaults:
+      run:
+        working-directory: ./services/auth-service
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::123456789012:role/github-actions-ecr-role
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REGISTRY_URL }}:${{ github.sha }} \
+            .
+
+      - name: Push Docker image
+        run: |
+          docker push \
+            ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REGISTRY_URL }}:${{ github.sha }}
