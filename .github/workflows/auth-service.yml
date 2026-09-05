@@ -49,6 +49,7 @@ jobs:
   security:
     name: Scan Code Security
     runs-on: ubuntu-latest
+    needs: build
     defaults:
       run:
         working-directory: ./services/auth-service
