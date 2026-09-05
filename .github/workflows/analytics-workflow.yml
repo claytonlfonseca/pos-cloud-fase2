@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'services/evaluation-service/**'
+      - 'services/analytics-service/**'
   pull_request:
     branches:
       - main
@@ -35,7 +35,7 @@ jobs:
         python-version: '3.11'
     
     - name: install dependencies
-      run: pip install -r requirements.txt
+      run: pip install -r requirements.txt pytest
 
     - name: run tests
       run: pytest -v
