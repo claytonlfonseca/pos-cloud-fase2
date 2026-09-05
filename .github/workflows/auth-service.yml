@@ -49,10 +49,9 @@ jobs:
       - name: Run Horusec SAST
         uses: fike/horusec-action@v0.2.2
         with:
-          source: 'services/auth-service' 
           arguments: >
-            -p ./
-            -p json
+            -p ./services/auth-service
+            -o json
             -O horusec-output.json
             --ignore-severity LOW
       - name: upload Horusec Report
