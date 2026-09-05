@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    name: Build & Test
+    name: Pipeline
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -45,3 +45,25 @@ jobs:
         with:
           version: v1.59
           working-directory: services/auth-service
+
+      - name: Run Horusec SAST
+        uses: fike/horusec-action@v0.3.0
+        with:
+          source: 'services/auth-service' 
+          arguments: >
+            -p ./
+            -p json
+            -O horusec-output.json
+            --ignore-severity LOW
+      - name: upload Horusec Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: horusec-report
+          path: horusec-output.json
+      
+
+          
+    
+    
+    
