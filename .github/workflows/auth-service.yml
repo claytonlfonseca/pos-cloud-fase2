@@ -46,6 +46,44 @@ jobs:
           version: v1.59
           working-directory: services/auth-service
 
+  security:
+    name: Scan Code Security
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./services/auth-service
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: SCA Trivy
+        uses: aquasecurity/trivy-action@v0.4.0
+        with:
+          scan-type: 'fs'
+          scan-ref: './services/auth-service'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
+
+      - name: Trivy JSON Report
+        uses: aquasecurity/trivy-action@v0.4.0
+        with:
+          scan-type: 'fs'
+          scan-ref: './services/auth-service'
+          format: 'json'
+          exit-code: '1'
+          ignore-unfixed: true
+          severity: 'CRITICAL,HIGH'
+          output: 'trivy-report.json'
+      
+      - name: upload Trivy Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trivy-report
+          path: trivy-report.json  
+      
       - name: Run Horusec SAST
         uses: fike/horusec-action@v0.2.2
         with:
@@ -54,6 +92,7 @@ jobs:
             -o json
             -O horusec-output.json
             --ignore-severity LOW
+
       - name: upload Horusec Report
         uses: actions/upload-artifact@v4
         if: always()
