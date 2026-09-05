@@ -22,7 +22,7 @@ Este é o serviço de autenticação do projeto ToggleMaster. Ele é responsáve
     Crie um arquivo chamado `.env` na raiz desta pasta (`auth-service/`) com o seguinte conteúdo:
     ```.env
     # String de conexão do seu banco de dados PostgreSQL
-    DATABASE_URL="postgres://***:****@localhost:5432/auth_db"
+    DATABASE_URL="*****/auth_db"
     
     # Porta que o serviço irá rodar
     PORT="8001"
