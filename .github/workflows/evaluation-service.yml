@@ -117,7 +117,7 @@ jobs:
             -p ./services/evaluation-service
             -o json
             -O horusec-output.json
-            --ignore-severity "LOW,MEDIUM"
+            -s="LOW,MEDIUM"
 
       - name: upload Horusec Report
         uses: actions/upload-artifact@v4
