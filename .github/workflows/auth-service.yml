@@ -3,14 +3,21 @@ name: CI Auth Pipeline
 on:
   push:
     branches:
-      -main
+      - main
+    paths:
+      - 'services/auth-service/**'
   pull_request:
     branches:
-      -main
+      - main
+    paths:
+      - 'services/auth-service/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./services/auth-service
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
