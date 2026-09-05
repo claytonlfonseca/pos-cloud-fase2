@@ -1,0 +1,11 @@
+{
+  "horusecCliMonitorRetryInSeconds": 15,
+  "horusecCliPrintOutputType": "text",
+  "horusecCliOutputFilePath": "",
+  "horusecCliFalsePositiveHashes": [
+    "871e35627a8635053870a2e54c8845b8709a370b61209ae613666706cda78694",
+    "bcdcb754e0b44f08c91ebc386508274ea4e75bf7ea1c2833bbcb115ea4066f71",
+    "e7d80f2b66d4509a184d1253bf65311ba7a922d51455eb5075042331b952dc69"
+  ],
+  "horusecCliRiskAcceptHashes": []
+}

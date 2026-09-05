@@ -118,6 +118,7 @@ jobs:
             -o json
             -O horusec-output.json
             -s="LOW,MEDIUM"
+            --config-file-path ./services/evaluation-service/horusec-config.json
 
       - name: upload Horusec Report
         uses: actions/upload-artifact@v4
