@@ -58,6 +58,12 @@ jobs:
         with:
           go-version: '1.25.4'
 
+      - name: Download dependencies
+        run: |
+          go mod tidy
+          go mod download
+        working-directory: services/auth-service
+
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
@@ -123,7 +129,12 @@ jobs:
   docker:
     name: Build and push Docker image
     runs-on: ubuntu-latest
-    needs: security 
+    needs: security
+
+    permissions:
+      id-token: write
+      contents: read
+
     defaults:
       run:
         working-directory: ./services/auth-service
@@ -134,7 +145,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::123456789012:role/github-actions-ecr-role
+          role-to-assume: arn:aws:iam::257527265067:role/trust-policy
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Login to Amazon ECR
