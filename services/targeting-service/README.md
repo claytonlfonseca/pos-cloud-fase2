@@ -25,7 +25,7 @@ Este é o serviço de regras de segmentação (targeting) do projeto ToggleMaste
     Crie um arquivo chamado `.env` na raiz desta pasta (`targeting-service/`) com o seguinte conteúdo:
     ```.env
     # String de conexão do seu banco de dados PostgreSQL
-    DATABASE_URL="postgres://SEU_USUARIO:SUA_SENHA@localhost:5432/targeting_db"
+    DATABASE_URL=""
     
     # Porta que este serviço (targeting-service) irá rodar
     PORT="8003"
